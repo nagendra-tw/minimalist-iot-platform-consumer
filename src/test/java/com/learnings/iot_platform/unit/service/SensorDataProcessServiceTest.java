@@ -62,6 +62,27 @@ public class SensorDataProcessServiceTest {
         ));
     }
 
+    @Test
+    public void testAnalyzeTemperature_NoAlert() {
+        String sensorId = "sensor-1";
+        SensorData currentReading = createMockSensorData(sensorId, 41.0, 50, 10.0, 20.0);
+        List<SensorData> historicalReadings = Arrays.asList(
+                createMockSensorData(sensorId, 31.0, 50, 10.0, 20.0),
+                createMockSensorData(sensorId, 32.0, 50, 10.0, 20.0),
+                createMockSensorData(sensorId, 33.0, 50, 10.0, 20.0)
+        );
+
+        when(sensorDataConsumerRepository.findBySensorIdAndTimestampBetween(
+                eq(sensorId),
+                any(LocalDateTime.class),
+                any(LocalDateTime.class)
+        )).thenReturn(historicalReadings);
+
+        sensorDataProcessService.analyzeTemperature(currentReading);
+
+        verify(alertService, times(0)).sendAlert(any());
+    }
+
     private SensorData createMockSensorData(String sensorId, double temperature, double battery,
                                             double latitude, double longitude) {
         SensorData data = new SensorData();

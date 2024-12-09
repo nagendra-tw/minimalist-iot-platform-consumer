@@ -1,6 +1,7 @@
 package com.learnings.iot_platform.service;
 
 import com.learnings.iot_platform.constants.AlertTypes;
+import com.learnings.iot_platform.constants.Constants;
 import com.learnings.iot_platform.model.SensorAlert;
 import com.learnings.iot_platform.model.SensorData;
 import com.learnings.iot_platform.repository.SensorDataConsumerRepository;
@@ -38,7 +39,9 @@ public class SensorDataProcessService {
                 .average()
                 .orElse(0.0);
 
-        if(avgTemperature > 0.0) {
+        System.out.println(avgTemperature);
+
+        if(avgTemperature > Constants.AVERAGE_TEMPERATURE_THRESHOLD) {
             generateTemperatureAlert(
                     currentReading.getSensorId(),
                     avgTemperature
