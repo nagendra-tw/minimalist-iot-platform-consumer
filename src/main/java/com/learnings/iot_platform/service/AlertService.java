@@ -11,7 +11,7 @@ public class AlertService {
 
     public void sendAlert(SensorAlert alert){
         // todo: send this alert to a new sensor alert topic
-        System.out.println("ALERT Generated: " + alert.getAlertType() +
-                " for Sensor " + alert.getSensorId());
+
+        LOGGER.info("ALERT Generated: {} for Sensor {}", alert.getAlertType(), alert.getSensorId());
     }
 }

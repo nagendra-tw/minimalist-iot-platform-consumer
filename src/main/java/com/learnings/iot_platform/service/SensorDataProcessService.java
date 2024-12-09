@@ -39,14 +39,29 @@ public class SensorDataProcessService {
                 .average()
                 .orElse(0.0);
 
-        System.out.println(avgTemperature);
-
         if(avgTemperature > Constants.AVERAGE_TEMPERATURE_THRESHOLD) {
             generateTemperatureAlert(
                     currentReading.getSensorId(),
                     avgTemperature
             );
         }
+    }
+
+    public void analyzeBattery(SensorData currentReading) {
+        if(currentReading.getBattery() <= Constants.LOW_BATTERY_THRESHOLD) {
+            generateBatteryAlert(currentReading.getSensorId(), currentReading.getBattery());
+        }
+    }
+
+    private void generateBatteryAlert(String sensorId, Double battery) {
+        SensorAlert sensorAlert = SensorAlert.builder()
+                .sensorId(sensorId)
+                .alertType(AlertTypes.LOW_BATTERY.toString())
+                .message("Battery level is critically low at " + battery + "%.")
+                .timestamp(Instant.now())
+                .build();
+
+        alertService.sendAlert(sensorAlert);
     }
 
     private void generateTemperatureAlert(String sensorId, double avgTemperature) {

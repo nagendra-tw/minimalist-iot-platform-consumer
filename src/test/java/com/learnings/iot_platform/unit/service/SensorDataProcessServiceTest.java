@@ -1,6 +1,7 @@
 package com.learnings.iot_platform.unit.service;
 
 import com.learnings.iot_platform.constants.AlertTypes;
+import com.learnings.iot_platform.constants.Constants;
 import com.learnings.iot_platform.model.SensorData;
 import com.learnings.iot_platform.repository.SensorDataConsumerRepository;
 import com.learnings.iot_platform.service.AlertService;
@@ -81,6 +82,31 @@ public class SensorDataProcessServiceTest {
         sensorDataProcessService.analyzeTemperature(currentReading);
 
         verify(alertService, times(0)).sendAlert(any());
+    }
+
+    @Test
+    public void testAnalyzeBattery_LowBatteryAlert() {
+        String sensorId = "sensor-1";
+        SensorData currentReading = createMockSensorData(sensorId, 41.0, 15, 10.0, 20.0);
+
+        sensorDataProcessService.analyzeBattery(currentReading);
+
+        verify(alertService, times(1)).sendAlert(
+                argThat(alert ->
+                        alert.getSensorId().equals(sensorId) &&
+                        alert.getAlertType().equals(AlertTypes.LOW_BATTERY.toString()))
+        );
+    }
+
+    @Test
+    public void testAnalyzeBattery_NoAlert() {
+        String sensorId = "sensor-1";
+        SensorData currentReading = createMockSensorData(sensorId, 41.0, 27, 10.0, 26.0);
+
+        sensorDataProcessService.analyzeBattery(currentReading);
+
+        verify(alertService, times(0)).sendAlert(any());
+
     }
 
     private SensorData createMockSensorData(String sensorId, double temperature, double battery,
