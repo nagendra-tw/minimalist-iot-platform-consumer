@@ -1,6 +1,12 @@
 spring:
   application:
     name: iot_platform_consumer
+  kafka:
+    consumer:
+      bootstrap-servers: localhost:9092
+
+consumer:
+  group-id: iot-platform-consumers
 
 server:
   port: 0
