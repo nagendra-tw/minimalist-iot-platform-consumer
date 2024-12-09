@@ -1,11 +1,11 @@
 package com.learnings.iot_platform.constants;
 
-public enum AlertType {
-    HIGH_TEMPERATURE("High temperature");
+public enum AlertTypes {
+    HIGH_TEMPERATURE("HIGH TEMPERATURE");
 
     private final String displayName;
 
-    AlertType(String displayName) {
+    AlertTypes(String displayName) {
         this.displayName = displayName;
     }
 

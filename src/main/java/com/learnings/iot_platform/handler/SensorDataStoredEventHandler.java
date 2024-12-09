@@ -15,8 +15,6 @@ public class SensorDataStoredEventHandler {
 
     @KafkaHandler
     public void handle(SensorDataStoredEvent sensorDataStoredEvent) {
-//        LOGGER.info("Received messageId: {}", messageId );
-//        LOGGER.info("Received messageKey: {}", messageKey );
         LOGGER.info("Received SensorDataStoredEvent {}", sensorDataStoredEvent);
     }
 }
