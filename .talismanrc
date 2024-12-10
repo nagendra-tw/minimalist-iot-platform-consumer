@@ -9,3 +9,8 @@ fileignoreconfig:
 - filename: src/main/java/com/learnings/iot_platform/handler/SensorDataStoredEventHandler.java
   checksum: 8de33c8e9a41312f96836748f4876f8b53ba6d8882f0f8b2d4382e096dfedd9b
 version: ""
+
+fileignoreconfig:
+- filename: src/main/java/com/learnings/iot_platform/config/KafkaConfig.java
+  checksum: 21a2c4b3d85ec48cdb66b116de837c5eab3f29190ed2ceb1b1b71e5a60320f84
+version: ""
