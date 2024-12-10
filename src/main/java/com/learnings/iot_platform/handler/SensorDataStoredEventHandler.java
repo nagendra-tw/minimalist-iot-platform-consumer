@@ -38,6 +38,7 @@ public class SensorDataStoredEventHandler {
         sensorData.setLongitude(sensorDataStoredEvent.getLongitude());
         sensorData.setSensorId(sensorDataStoredEvent.getSensorId());
         sensorData.setSensorDataId(sensorDataStoredEvent.getSensorDataId());
+        sensorData.setBattery(sensorDataStoredEvent.getBattery());
 
         return sensorData;
     }
