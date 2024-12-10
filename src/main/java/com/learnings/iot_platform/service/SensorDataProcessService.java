@@ -29,8 +29,8 @@ public class SensorDataProcessService {
 
         List<SensorData> recentReadings = sensorDataConsumerRepository.findBySensorIdAndTimestampBetween(
                 currentReading.getSensorId(),
-                currentReadingTimestamp,
-                fiveMinutesAgo
+                fiveMinutesAgo,
+                currentReadingTimestamp
         );
 
         double avgTemperature = recentReadings
