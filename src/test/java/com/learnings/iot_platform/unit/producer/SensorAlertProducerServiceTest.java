@@ -12,6 +12,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.kafka.core.KafkaTemplate;
 
 import java.time.Instant;
+import java.time.LocalDateTime;
 
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.times;
@@ -37,7 +38,7 @@ public class SensorAlertProducerServiceTest {
         sensorAlertGeneratedEvent.setSensorId(sensorId);
         sensorAlertGeneratedEvent.setAlertType(AlertTypes.HIGH_TEMPERATURE.toString());
         sensorAlertGeneratedEvent.setMessage("ALERT: " + AlertTypes.HIGH_TEMPERATURE.toString() +  " for Sensor " + sensorId );
-        sensorAlertGeneratedEvent.setTimestamp(Instant.now());
+        sensorAlertGeneratedEvent.setTimestamp(LocalDateTime.now());
 
         sensorAlertProducerService.produceSensorAlertEvent(sensorAlertGeneratedEvent);
 

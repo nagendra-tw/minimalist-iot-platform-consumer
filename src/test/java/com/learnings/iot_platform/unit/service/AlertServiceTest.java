@@ -12,6 +12,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.time.Instant;
+import java.time.LocalDateTime;
 
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -34,7 +35,7 @@ public class AlertServiceTest {
         String sensorId = "sensorId";
         SensorAlert sensorAlert = new SensorAlert();
         sensorAlert.setSensorId(sensorId);
-        sensorAlert.setTimestamp(Instant.now());
+        sensorAlert.setTimestamp(LocalDateTime.now());
         sensorAlert.setAlertType(AlertTypes.HIGH_TEMPERATURE.toString());
         sensorAlert.setMessage("ALERT: " + AlertTypes.HIGH_TEMPERATURE +  " for Sensor " + sensorId );
 

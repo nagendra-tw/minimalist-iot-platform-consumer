@@ -5,7 +5,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.sql.Timestamp;
 import java.time.Instant;
+import java.time.LocalDateTime;
 
 @Data
 @AllArgsConstructor
@@ -15,5 +17,5 @@ public class SensorAlert {
     private String sensorId;
     private String alertType;
     private String message;
-    private Instant timestamp;
+    private LocalDateTime timestamp;
 }

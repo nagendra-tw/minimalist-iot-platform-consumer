@@ -58,7 +58,7 @@ public class SensorDataProcessService {
                 .sensorId(sensorId)
                 .alertType(AlertTypes.LOW_BATTERY.toString())
                 .message("Battery level is critically low at " + battery + "%.")
-                .timestamp(Instant.now())
+                .timestamp(LocalDateTime.now())
                 .build();
 
         alertService.sendAlert(sensorAlert);
@@ -69,7 +69,7 @@ public class SensorDataProcessService {
         sensorAlert.setSensorId(sensorId);
         sensorAlert.setAlertType(AlertTypes.HIGH_TEMPERATURE.toString());
         sensorAlert.setMessage(String.format("5-min avg temperature %.2f°C exceeds 40°C", avgTemperature));
-        sensorAlert.setTimestamp(Instant.now());
+        sensorAlert.setTimestamp(LocalDateTime.now());
 
         alertService.sendAlert(sensorAlert);
     }
