@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: iot_platform_consumer
+  data:
+    mongodb:
+      host: mongo
+      port: 27017
+      database: iot-platform
+  kafka:
+    consumer:
+      bootstrap-servers: kafka-1:9092
+
+consumer:
+  group-id: iot-platform-consumers
+
+server:
+  port: 8082
