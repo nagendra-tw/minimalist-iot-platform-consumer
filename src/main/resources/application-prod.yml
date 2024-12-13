@@ -8,7 +8,7 @@ spring:
       database: iot-platform
   kafka:
     consumer:
-      bootstrap-servers: kafka-1:9092
+      bootstrap-servers: kafka-1:29092
 
 consumer:
   group-id: iot-platform-consumers
