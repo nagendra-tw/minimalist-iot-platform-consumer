@@ -23,7 +23,7 @@ public class SensorDataStoredEventHandler {
     @KafkaHandler
     public void handle(SensorDataStoredEvent sensorDataStoredEvent) {
         LOGGER.info("Received SensorDataStoredEvent {}", sensorDataStoredEvent);
-
+        System.out.println("Received SensorDataStoredEvent " + sensorDataStoredEvent);
         SensorData sensorData = mapSensorDataStoredEventToSensorData(sensorDataStoredEvent);
         sensorDataProcessService.analyzeTemperature(sensorData);
         sensorDataProcessService.analyzeBattery(sensorData);

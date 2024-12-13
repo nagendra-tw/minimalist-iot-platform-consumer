@@ -19,8 +19,6 @@ public class SensorAlertProducerService {
     }
 
     public void produceSensorAlertEvent(SensorAlertGeneratedEvent sensorAlertGeneratedEvent) {
-        LOGGER.info("Going to publish sensor alert generated event: {}", sensorAlertGeneratedEvent);
-
         kafkaTemplate.send(
                 Constants.SENSOR_ALERT_GENERATED_EVENT_TOPIC,
                 sensorAlertGeneratedEvent.getSensorId(),
